@@ -1,42 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
 
-    <h1>Reviews Place ID Finder :  ChIJC4slyvyBn5UR4F1gfUpdWU8</h1>
-    <h2>Credencial: 👈AIzaSyDgIBmYs2fNVwWEhZvBcu2ZmrOsn1dYZb4</h2>
+  <h1>Reviews Place ID Finder : ChIJC4slyvyBn5UR4F1gfUpdWU8</h1>
+  <h2>Credencial: 👈AIzaSyDgIBmYs2fNVwWEhZvBcu2ZmrOsn1dYZb4</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia blanditiis fugiat reprehenderit nam suscipit
+    voluptates dolore provident natus, iure non corporis optio, dolorem reiciendis hic esse maiores dignissimos
+    voluptatum pariatur?</p>
+  <script>
+    async function fetchReviews() {
 
-    <script>
-        async function fetchReviews() {
-            
-          const placeId = 'ChIJC4slyvyBn5UR4F1gfUpdWU8'; // Reemplaza con el place_id del lugar que deseas consultar
-          const apiKey = 'AIzaSyDgIBmYs2fNVwWEhZvBcu2ZmrOsn1dYZb4'; // Reemplaza con tu clave de API
-    
-          const url = `https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&key=${apiKey}`;
-    
-          try {
-            const response = await fetch(url);
-            const data = await response.json();
-    
-            if (data.status === 'OK') {
-              const reviews = data.result.reviews;
-              const scores = reviews.map(review => review.rating);
-              console.log(scores);
-            } else {
-              console.error('Error:', data.status);
-            }
-          } catch (error) {
-            console.error('Error fetching reviews:', error);
-          }
+      const placeId = 'ChIJC4slyvyBn5UR4F1gfUpdWU8'; // Reemplaza con el place_id del lugar que deseas consultar
+      const apiKey = 'AIzaSyDgIBmYs2fNVwWEhZvBcu2ZmrOsn1dYZb4'; // Reemplaza con tu clave de API
+
+      const url = `https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&key=${apiKey}`;
+
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data.status === 'OK') {
+          const reviews = data.result.reviews;
+          const scores = reviews.map(review => review.rating);
+          console.log(scores);
+        } else {
+          console.error('Error:', data.status);
         }
-    
-        document.addEventListener('DOMContentLoaded', fetchReviews);
-      </script>
+      } catch (error) {
+        console.error('Error fetching reviews:', error);
+      }
+    }
 
-    
+    document.addEventListener('DOMContentLoaded', fetchReviews);
+  </script>
+
+
 </body>
 </html>
